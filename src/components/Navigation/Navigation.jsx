@@ -5,9 +5,9 @@ const Navigation = () => {
   return (
     <nav>
       <ul>
-        <Link>Register</Link>
-        <Link>Login</Link>
-        <Link>Contacts</Link>
+        <Link to="register">Register</Link>
+        <Link to="login">Login</Link>
+        <Link to="contacts">Contacts</Link>
       </ul>
     </nav>
   );
