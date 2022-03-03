@@ -1,4 +1,9 @@
 import React from 'react';
+import { useState } from 'react';
+import { useRegisterUserMutation } from 'redux/userApi';
+import { useSelector } from 'react-redux';
+import { add } from 'redux/userSlice';
+import { useDispatch } from 'react-redux';
 import { Grid, GridContainer } from '../Contacts/Contacts.styled';
 import {
   Form,
@@ -9,19 +14,72 @@ import {
 } from '../../components/ContactForm/ContactForm.styled';
 
 const Register = () => {
+  const dispatch = useDispatch();
+
+  const [obj, setObj] = useState(null);
+  const [registerUser] = useRegisterUserMutation();
+  const [userName, setUserName] = useState('');
+  const [userEmail, setUserEmail] = useState('');
+  const [userPassword, setUserPassword] = useState('');
+
+  // console.log(user);
+
+  const inputHandler = e => {
+    switch (e.target.name) {
+      case 'name':
+        setUserName(e.target.value);
+        break;
+      case 'email':
+        setUserEmail(e.target.value);
+        break;
+      case 'password':
+        setUserPassword(e.target.value);
+        break;
+      default:
+        return;
+    }
+  };
+
+  const submitHandler = e => {
+    e.preventDefault();
+    console.log({
+      userName,
+      userEmail,
+      userPassword,
+    });
+    registerUser({ name: userName, email: userEmail, password: userPassword })
+      .then(({ data }) => console.log(data))
+      .catch(error => console.log(error.message));
+  };
+
   return (
     <Grid>
       <GridContainer>
-        <Form>
+        <Form onSubmit={submitHandler}>
           <Wrapper>
             <Label htmlFor="userName">Name</Label>
-            <Input type="text" id="userName" name="name" />
+            <Input
+              onChange={inputHandler}
+              type="text"
+              id="userName"
+              name="name"
+            />
 
             <Label htmlFor="userEmail">Email</Label>
-            <Input type="email" id="userEmail" name="email" />
+            <Input
+              onChange={inputHandler}
+              type="email"
+              id="userEmail"
+              name="email"
+            />
 
             <Label htmlFor="userPassword">Password</Label>
-            <Input type="password" id="userPassword" name="password" />
+            <Input
+              onChange={inputHandler}
+              type="password"
+              id="userPassword"
+              name="password"
+            />
 
             <button type="submit">Sign up</button>
           </Wrapper>
