@@ -48,7 +48,9 @@ const Register = () => {
       userPassword,
     });
     registerUser({ name: userName, email: userEmail, password: userPassword })
-      .then(({ data }) => console.log(data))
+      .then(({ data }) => {
+        console.log(data);
+      })
       .catch(error => console.log(error.message));
   };
 

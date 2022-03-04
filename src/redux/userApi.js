@@ -4,10 +4,12 @@ export const userApi = createApi({
   reducerPath: 'userApi',
   baseQuery: fetchBaseQuery({
     baseUrl: 'https://connections-api.herokuapp.com/',
+    tagTypes: ['user'],
   }),
   endpoints: builder => ({
-    getUserByEmail: builder.query({
+    getCurrentUser: builder.query({
       query: () => `/users/current`,
+      providesTags: ['user'],
     }),
     registerUser: builder.mutation({
       // note: an optional `queryFn` may be used in place of `query`
@@ -38,7 +40,7 @@ export const userApi = createApi({
 });
 
 export const {
-  useGetUserByEmailQuery,
+  useGetCurrentUserQuery,
   useRegisterUserMutation,
   useSignInUserMutation,
 } = userApi;
