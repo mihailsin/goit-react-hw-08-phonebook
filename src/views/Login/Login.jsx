@@ -1,7 +1,7 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { add } from 'redux/userSlice';
+import { setUser } from 'redux/authSlice';
 import { useSignInUserMutation, useGetCurrentUserQuery } from 'redux/userApi';
 import { Grid, GridContainer } from '../Contacts/Contacts.styled';
 import {
@@ -42,7 +42,7 @@ const Login = () => {
     signInUser({ email: userEmail, password: userPassword })
       .then(({ data }) => {
         console.log('signed in user:', data.user, 'token:', data.token);
-        dispatch(add(data));
+        dispatch(setUser(data));
       })
       .catch(error => console.log(error.message));
   };

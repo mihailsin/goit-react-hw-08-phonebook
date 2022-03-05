@@ -1,8 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import { useRegisterUserMutation } from 'redux/userApi';
-import { useSelector } from 'react-redux';
-import { add } from 'redux/userSlice';
+import { setUser } from 'redux/authSlice';
 import { useDispatch } from 'react-redux';
 import { Grid, GridContainer } from '../Contacts/Contacts.styled';
 import {
@@ -16,13 +15,10 @@ import {
 const Register = () => {
   const dispatch = useDispatch();
 
-  const [obj, setObj] = useState(null);
   const [registerUser] = useRegisterUserMutation();
   const [userName, setUserName] = useState('');
   const [userEmail, setUserEmail] = useState('');
   const [userPassword, setUserPassword] = useState('');
-
-  // console.log(user);
 
   const inputHandler = e => {
     switch (e.target.name) {
@@ -49,7 +45,8 @@ const Register = () => {
     });
     registerUser({ name: userName, email: userEmail, password: userPassword })
       .then(({ data }) => {
-        console.log(data);
+        console.log('signed in user:', data.user, 'token:', data.token);
+        dispatch(setUser(data));
       })
       .catch(error => console.log(error.message));
   };

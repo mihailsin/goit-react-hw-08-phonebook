@@ -8,7 +8,7 @@ export const authSlice = createSlice({
     isLoggedIn: false,
   },
   reducers: {
-    add: (state, { payload }) => {
+    setUser: (state, { payload }) => {
       console.log(payload);
       state.name = payload.user;
       state.token = payload.token;
@@ -17,4 +17,4 @@ export const authSlice = createSlice({
   },
 });
 
-export const { add } = authSlice.actions;
+export const { setUser } = authSlice.actions;

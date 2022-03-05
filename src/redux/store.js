@@ -4,7 +4,7 @@ import storage from 'redux-persist/lib/storage'; // defaults to localStorage for
 import { filterSlice } from './filter-slice';
 import { contactsApi } from './contactsApi';
 import { userApi } from './userApi';
-import { authSlice } from './userSlice';
+import { authSlice } from './authSlice';
 // const store = configureStore({
 //   reducer: {
 //     // Add the generated reducer as a specific top-level slice
@@ -19,11 +19,16 @@ import { authSlice } from './userSlice';
 //   ],
 // });
 
+const authPersistConfig = {
+  key: 'root',
+  storage,
+};
+
 const store = configureStore({
   reducer: {
     // Add the generated reducer as a specific top-level slice
     [userApi.reducerPath]: userApi.reducer,
-    auth: authSlice.reducer,
+    auth: persistReducer(authPersistConfig, authSlice.reducer),
   },
   // Adding the api middleware enables caching, invalidation, polling,
   // and other useful features of `rtk-query`.
@@ -33,4 +38,6 @@ const store = configureStore({
   ],
 });
 
-export { store };
+const persistor = persistStore(store);
+
+export { store, persistor };
