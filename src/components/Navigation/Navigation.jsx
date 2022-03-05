@@ -1,6 +1,8 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { getUserName, getIsLoggedIn } from 'redux/auth-selectors';
+import { useLogOutUserMutation } from 'redux/userApi';
+import { unsetUser } from 'redux/authSlice';
 import AppBar from '@mui/material/AppBar';
 import { Wrapper, Container, List } from './Navigation.styled';
 import { Routes, Route, NavLink } from 'react-router-dom';
@@ -27,6 +29,8 @@ const activeLink = {
   fontStyle: 'oblique 10deg',
 };
 const Navigation = () => {
+  const dispatch = useDispatch();
+  const [logOutUser] = useLogOutUserMutation();
   const isLoggedIn = useSelector(getIsLoggedIn);
   const userName = useSelector(getUserName);
   console.log(userName, isLoggedIn);
@@ -62,7 +66,16 @@ const Navigation = () => {
             <Container>
               <List>
                 <li>Hello, {userName}!</li>
-                <button type="button">Log out</button>
+                <button
+                  type="button"
+                  onClick={() =>
+                    logOutUser()
+                      .then(dispatch(unsetUser()))
+                      .catch(error => console.log(error))
+                  }
+                >
+                  Log out
+                </button>
               </List>
             </Container>
           </Wrapper>
