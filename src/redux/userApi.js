@@ -53,7 +53,7 @@ export const userApi = createApi({
         url: '/users/logout',
         method: 'POST',
       }),
-      invalidatesTags: ['user'],
+      invalidatesTags: ['user', 'contacts'],
     }),
     getContacts: builder.query({
       query: () => 'contacts',
@@ -71,6 +71,13 @@ export const userApi = createApi({
       }),
       invalidatesTags: ['contacts'],
     }),
+    deleteContact: builder.mutation({
+      query: id => ({
+        url: `contacts/${id}`,
+        method: 'DELETE',
+      }),
+      invalidatesTags: ['contacts'],
+    }),
   }),
 });
 
@@ -81,4 +88,5 @@ export const {
   useLogOutUserMutation,
   useGetContactsQuery,
   useAddContactMutation,
+  useDeleteContactMutation,
 } = userApi;

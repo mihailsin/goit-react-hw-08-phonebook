@@ -1,4 +1,4 @@
-import { useDeleteContactMutation } from 'redux/contactsApi';
+import { useDeleteContactMutation } from 'redux/userApi';
 import { ImBin2 } from 'react-icons/im';
 import CircularProgress from '@mui/material/CircularProgress';
 import { toast } from 'react-toastify';

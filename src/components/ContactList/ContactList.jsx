@@ -1,11 +1,13 @@
 import { useSelector } from 'react-redux';
-import { useGetContactsQuery } from 'redux/userApi';
+import { useEffect, useState } from 'react';
+import { useGetContactsQuery, useGetCurrentUserQuery } from 'redux/userApi';
 import { List } from './ContactList.styled';
 import CircularProgress from '@mui/material/CircularProgress';
 import ContactItem from 'components/ContactItem';
 
 const ContactList = () => {
   const { data, isLoading } = useGetContactsQuery();
+  const { data: currentUser } = useGetCurrentUserQuery();
   const filterValue = useSelector(({ filter }) => filter);
   console.log(data);
 
@@ -19,6 +21,9 @@ const ContactList = () => {
   };
 
   const filteredContacts = filterContacts();
+
+  useEffect(() => {}, [currentUser]);
+
   return (
     <>
       {isLoading && (
