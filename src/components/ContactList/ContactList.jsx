@@ -1,6 +1,5 @@
 import { useSelector } from 'react-redux';
-import { useEffect } from 'react';
-import { useGetContactsQuery, useGetCurrentUserQuery } from 'redux/userApi';
+import { useGetContactsQuery } from 'redux/userApi';
 import { List } from './ContactList.styled';
 import CircularProgress from '@mui/material/CircularProgress';
 import ContactItem from 'components/ContactItem';
