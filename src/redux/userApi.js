@@ -55,6 +55,22 @@ export const userApi = createApi({
       }),
       invalidatesTags: ['user'],
     }),
+    getContacts: builder.query({
+      query: () => 'contacts',
+      providesTags: ['contacts'],
+    }),
+    addContact: builder.mutation({
+      // note: an optional `queryFn` may be used in place of `query`
+      query: ({ name, number }) => ({
+        url: 'contacts',
+        method: 'POST',
+        body: {
+          name,
+          number,
+        },
+      }),
+      invalidatesTags: ['contacts'],
+    }),
   }),
 });
 
@@ -63,4 +79,6 @@ export const {
   useRegisterUserMutation,
   useSignInUserMutation,
   useLogOutUserMutation,
+  useGetContactsQuery,
+  useAddContactMutation,
 } = userApi;

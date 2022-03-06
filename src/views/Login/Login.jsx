@@ -14,7 +14,6 @@ import {
 
 const Login = () => {
   const dispatch = useDispatch();
-  // const { data: currentUser } = useGetCurrentUserQuery();
   const [signInUser] = useSignInUserMutation();
   const [userEmail, setUserEmail] = useState('');
   const [userPassword, setUserPassword] = useState('');

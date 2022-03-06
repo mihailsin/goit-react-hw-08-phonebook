@@ -20,7 +20,7 @@ import { authSlice } from './authSlice';
 // });
 
 const authPersistConfig = {
-  key: 'root',
+  key: 'auth',
   storage,
 };
 
@@ -29,6 +29,7 @@ const store = configureStore({
     // Add the generated reducer as a specific top-level slice
     [userApi.reducerPath]: userApi.reducer,
     auth: persistReducer(authPersistConfig, authSlice.reducer),
+    filter: filterSlice.reducer,
   },
   // Adding the api middleware enables caching, invalidation, polling,
   // and other useful features of `rtk-query`.

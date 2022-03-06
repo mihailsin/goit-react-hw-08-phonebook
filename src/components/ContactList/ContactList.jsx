@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { useGetContactsQuery } from 'redux/contactsApi';
+import { useGetContactsQuery } from 'redux/userApi';
 import { List } from './ContactList.styled';
 import CircularProgress from '@mui/material/CircularProgress';
 import ContactItem from 'components/ContactItem';
@@ -7,6 +7,7 @@ import ContactItem from 'components/ContactItem';
 const ContactList = () => {
   const { data, isLoading } = useGetContactsQuery();
   const filterValue = useSelector(({ filter }) => filter);
+  console.log(data);
 
   const filterContacts = () => {
     if (data) {

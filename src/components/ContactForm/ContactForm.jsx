@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useGetContactsQuery, useAddContactMutation } from 'redux/contactsApi';
+import { useGetContactsQuery, useAddContactMutation } from 'redux/userApi';
 import { nanoid } from 'nanoid';
 import { toast } from 'react-toastify';
 import { Form, Label, Input, Button, Wrapper } from './ContactForm.styled';

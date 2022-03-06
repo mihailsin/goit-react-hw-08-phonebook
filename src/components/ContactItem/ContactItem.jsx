@@ -4,7 +4,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 import { toast } from 'react-toastify';
 import { Item, Button } from './ContactItem.styled';
 
-const ContactItem = ({ name, phone, id }) => {
+const ContactItem = ({ name, number, id }) => {
   const [deleteContact, { isLoading: isDeleting }] = useDeleteContactMutation();
 
   const deleteContactHandler = id => {
@@ -20,7 +20,7 @@ const ContactItem = ({ name, phone, id }) => {
 
   return (
     <Item>
-      {name} : {phone}
+      {name} : {number}
       <Button
         type="button"
         onClick={() => deleteContactHandler(id)}

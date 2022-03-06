@@ -1,5 +1,7 @@
 import { React } from 'react';
+import { useEffect } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
+import { useGetCurrentUserQuery } from 'redux/userApi';
 import Navigation from 'components/Navigation';
 import Register from 'views/Register';
 import Login from 'views/Login';
