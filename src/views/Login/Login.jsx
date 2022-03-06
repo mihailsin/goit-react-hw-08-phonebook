@@ -2,13 +2,13 @@ import React from 'react';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { setUser } from 'redux/authSlice';
-import { useSignInUserMutation, useGetCurrentUserQuery } from 'redux/userApi';
+import { useSignInUserMutation } from 'redux/userApi';
 import { Grid, GridContainer } from '../Contacts/Contacts.styled';
+import TextField from '@mui/material/TextField';
+import SubmitButton from 'components/SubmitButton';
 import {
   Form,
   Label,
-  Input,
-  Button,
   Wrapper,
 } from '../../components/ContactForm/ContactForm.styled';
 
@@ -51,23 +51,26 @@ const Login = () => {
       <GridContainer>
         <Form onSubmit={submitHandler}>
           <Wrapper>
-            <Label htmlFor="userEmail">Email</Label>
-            <Input
+            <Label htmlFor="userEmail"></Label>
+            <TextField
+              sx={{ mt: 2, mb: 2 }}
               type="email"
+              variant="outlined"
               id="userEmail"
+              label="Email"
               name="email"
               onChange={inputHandler}
             />
 
-            <Label htmlFor="userPassword">Password</Label>
-            <Input
+            <Label htmlFor="userPassword"></Label>
+            <TextField
               type="password"
               id="userPassword"
               name="password"
+              label="Password"
               onChange={inputHandler}
             />
-
-            <button type="submit">Sign in</button>
+            <SubmitButton text={'Sign in'} />
           </Wrapper>
         </Form>
       </GridContainer>

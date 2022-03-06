@@ -1,9 +1,7 @@
 import { React } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { useEffect } from 'react';
-import { getIsLoggedIn, getUserName } from 'redux/auth-selectors';
+import { useSelector } from 'react-redux';
+import { getIsLoggedIn } from 'redux/auth-selectors';
 import { Routes, Route, Navigate } from 'react-router-dom';
-import { useGetCurrentUserQuery } from 'redux/userApi';
 import Home from 'views/Home';
 import Navigation from 'components/Navigation';
 import Register from 'views/Register';

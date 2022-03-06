@@ -10,7 +10,7 @@ const Contacts = () => {
   return (
     <Grid>
       <GridContainer>
-        <h1>Phonebook</h1>
+        <h2>Add Contact</h2>
         <ContactForm />
       </GridContainer>
 

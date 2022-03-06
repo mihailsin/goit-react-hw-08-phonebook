@@ -4,8 +4,11 @@ import { getUserName, getIsLoggedIn } from 'redux/auth-selectors';
 import { useLogOutUserMutation } from 'redux/userApi';
 import { unsetUser } from 'redux/authSlice';
 import AppBar from '@mui/material/AppBar';
+import Button from '@mui/material/Button';
+import Avatar from '@mui/material/Avatar';
+import { blue } from '@mui/material/colors';
 import { Wrapper, Container, List } from './Navigation.styled';
-import { Routes, Route, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 
 const darkTheme = createTheme({
@@ -65,17 +68,33 @@ const Navigation = () => {
             </Container>
             <Container>
               <List>
+                <li>
+                  <Avatar
+                    sx={{ bgcolor: blue[100], color: blue[600], mr: 2 }}
+                  />
+                </li>
                 <li>Hello, {userName}!</li>
-                <button
-                  type="button"
-                  onClick={() =>
-                    logOutUser()
-                      .then(dispatch(unsetUser()))
-                      .catch(error => console.log(error))
-                  }
-                >
-                  Log out
-                </button>
+                <li>
+                  <Button
+                    sx={{
+                      boxShadow: 1,
+                      borderRadius: 2,
+                      minWidth: 30,
+                      ml: 5,
+                    }}
+                    variant="contained"
+                    size="small"
+                    color="secondary"
+                    type="button"
+                    onClick={() =>
+                      logOutUser()
+                        .then(dispatch(unsetUser()))
+                        .catch(error => console.log(error))
+                    }
+                  >
+                    Log out
+                  </Button>
+                </li>
               </List>
             </Container>
           </Wrapper>
@@ -94,12 +113,6 @@ const Navigation = () => {
                   to="login"
                 >
                   Login
-                </NavLink>
-                <NavLink
-                  style={({ isActive }) => (isActive ? activeLink : navLink)}
-                  to="contacts"
-                >
-                  Contacts
                 </NavLink>
               </List>
             </nav>
