@@ -4,10 +4,9 @@ import { List } from './ContactList.styled';
 import CircularProgress from '@mui/material/CircularProgress';
 import ContactItem from 'components/ContactItem';
 
-const ContactList = () => {
+const ContactList = ({ getContactToEdit }) => {
   const { data, isLoading } = useGetContactsQuery();
   const filterValue = useSelector(({ filter }) => filter);
-
   const filterContacts = () => {
     if (data) {
       const normalizedContacts = filterValue.toLowerCase();
@@ -30,7 +29,13 @@ const ContactList = () => {
       {data && (
         <List>
           {filteredContacts.map(contact => (
-            <ContactItem key={contact.id} {...contact} />
+            <ContactItem
+              getContactToEdit={getContactToEdit}
+              key={contact.id}
+              id={contact.id}
+              name={contact.name}
+              number={contact.number}
+            />
           ))}
         </List>
       )}

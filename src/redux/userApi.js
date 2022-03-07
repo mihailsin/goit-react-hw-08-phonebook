@@ -7,7 +7,6 @@ export const userApi = createApi({
     prepareHeaders: (headers, { getState }) => {
       const token = getState().auth.token;
       if (token) {
-        console.log(token);
         headers.set('authorization', `Bearer ${token}`);
       }
       return headers;
@@ -71,6 +70,17 @@ export const userApi = createApi({
       }),
       invalidatesTags: ['contacts'],
     }),
+    editContact: builder.mutation({
+      query: ({ id, name, number }) => ({
+        url: `contacts/${id}`,
+        method: 'PATCH',
+        body: {
+          name,
+          number,
+        },
+      }),
+      invalidatesTags: ['contacts'],
+    }),
   }),
 });
 
@@ -82,4 +92,5 @@ export const {
   useGetContactsQuery,
   useAddContactMutation,
   useDeleteContactMutation,
+  useEditContactMutation,
 } = userApi;
