@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { useGetContactsQuery, useAddContactMutation } from 'redux/userApi';
 import { nanoid } from 'nanoid';
 import { toast } from 'react-toastify';
+import TextField from '@mui/material/TextField';
+import SubmitButton from 'components/SubmitButton';
 import { Form, Label, Input, Button, Wrapper } from './ContactForm.styled';
 import 'react-toastify/dist/ReactToastify.css';
 import CircularProgress from '@mui/material/CircularProgress';
@@ -52,35 +54,37 @@ const ContactForm = () => {
   return (
     <Form onSubmit={submitHandler}>
       <Wrapper>
-        <Label htmlFor={nameInputId}>Name</Label>
-        <Input
+        <TextField
+          sx={{ mt: 2, mb: 2 }}
+          variant="outlined"
           id={nameInputId}
+          label="Name"
           value={name}
           onChange={inputHandler}
           type="text"
           name="name"
           pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
           title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-          required
         />
-        <Label htmlFor={numberInputid}>Number</Label>
-        <Input
+        <TextField
+          variant="outlined"
           id={numberInputid}
+          label="Number"
           value={number}
           onChange={inputHandler}
           type="tel"
           name="number"
           pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
           title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-          required
         />
         {isLoading ? (
-          <Button type="submit" disabled>
-            Adding contact &nbsp;
-            <CircularProgress color="inherit" size={12} />
-          </Button>
+          <SubmitButton
+            disabled={true}
+            text={'Adding contact'}
+            spinner={<CircularProgress color="inherit" size={14} />}
+          ></SubmitButton>
         ) : (
-          <Button type="submit">Add Contact</Button>
+          <SubmitButton text={'Add Contact'}></SubmitButton>
         )}
       </Wrapper>
     </Form>

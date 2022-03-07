@@ -53,18 +53,6 @@ const Navigation = () => {
                 <List>
                   <NavLink
                     style={({ isActive }) => (isActive ? activeLink : navLink)}
-                    to="register"
-                  >
-                    Register
-                  </NavLink>
-                  <NavLink
-                    style={({ isActive }) => (isActive ? activeLink : navLink)}
-                    to="login"
-                  >
-                    Login
-                  </NavLink>
-                  <NavLink
-                    style={({ isActive }) => (isActive ? activeLink : navLink)}
                     to="contacts"
                   >
                     Contacts
@@ -86,7 +74,7 @@ const Navigation = () => {
                       boxShadow: 1,
                       borderRadius: 2,
                       minWidth: 30,
-                      ml: 5,
+                      ml: 2,
                     }}
                     variant="contained"
                     size="small"
