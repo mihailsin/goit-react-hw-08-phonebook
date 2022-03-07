@@ -51,12 +51,16 @@ const Navigation = () => {
             <Container>
               <nav>
                 <List>
-                  <NavLink
-                    style={({ isActive }) => (isActive ? activeLink : navLink)}
-                    to="contacts"
-                  >
-                    Contacts
-                  </NavLink>
+                  <li>
+                    <NavLink
+                      style={({ isActive }) =>
+                        isActive ? activeLink : navLink
+                      }
+                      to="contacts"
+                    >
+                      Contacts
+                    </NavLink>
+                  </li>
                 </List>
               </nav>
             </Container>
@@ -92,18 +96,22 @@ const Navigation = () => {
           <Container>
             <nav>
               <List>
-                <NavLink
-                  style={({ isActive }) => (isActive ? activeLink : navLink)}
-                  to="register"
-                >
-                  Register
-                </NavLink>
-                <NavLink
-                  style={({ isActive }) => (isActive ? activeLink : navLink)}
-                  to="login"
-                >
-                  Login
-                </NavLink>
+                <li>
+                  <NavLink
+                    style={({ isActive }) => (isActive ? activeLink : navLink)}
+                    to="register"
+                  >
+                    Register
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    style={({ isActive }) => (isActive ? activeLink : navLink)}
+                    to="login"
+                  >
+                    Login
+                  </NavLink>
+                </li>
               </List>
             </nav>
           </Container>

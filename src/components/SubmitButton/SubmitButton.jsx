@@ -6,7 +6,12 @@ const SubmitButton = ({ text, spinner }) => {
     <Button
       disabled={false}
       variant="contained"
-      sx={{ mt: 2, alignSelf: 'center', bgcolor: grey[800] }}
+      sx={{
+        mt: 2,
+        justifySelf: 'center',
+        alignSelf: 'center',
+        bgcolor: grey[800],
+      }}
       type="submit"
     >
       {text} {spinner}

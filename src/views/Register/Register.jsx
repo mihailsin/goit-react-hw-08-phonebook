@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useRegisterUserMutation } from 'redux/userApi';
 import { setUser } from 'redux/authSlice';
 import { useDispatch } from 'react-redux';
-import { Grid, GridContainer } from '../Contacts/Contacts.styled';
+import FormWrapper from 'components/FormWrapper';
 import TextField from '@mui/material/TextField';
 import SubmitButton from 'components/SubmitButton';
 import {
@@ -52,47 +52,46 @@ const Register = () => {
   };
 
   return (
-    <Grid>
-      <GridContainer>
-        <Form onSubmit={submitHandler}>
-          <Wrapper>
-            <Label htmlFor="userName"></Label>
-            <TextField
-              sx={{ mt: 2, mb: 2 }}
-              variant="outlined"
-              label="Name"
-              onChange={inputHandler}
-              type="text"
-              id="userName"
-              name="name"
-            />
+    <FormWrapper>
+      <Form onSubmit={submitHandler}>
+        <Wrapper>
+          <h2>Register form</h2>
+          <Label htmlFor="userName"></Label>
+          <TextField
+            sx={{ mt: 2, mb: 2 }}
+            variant="outlined"
+            label="Name"
+            onChange={inputHandler}
+            type="text"
+            id="userName"
+            name="name"
+          />
 
-            <Label htmlFor="userEmail"></Label>
-            <TextField
-              sx={{ mb: 2 }}
-              type="email"
-              variant="outlined"
-              id="userEmail"
-              label="Email"
-              onChange={inputHandler}
-              name="email"
-            />
+          <Label htmlFor="userEmail"></Label>
+          <TextField
+            sx={{ mb: 2 }}
+            type="email"
+            variant="outlined"
+            id="userEmail"
+            label="Email"
+            onChange={inputHandler}
+            name="email"
+          />
 
-            <Label htmlFor="userPassword"></Label>
-            <TextField
-              sx={{ mb: 2 }}
-              variant="outlined"
-              label="Password"
-              onChange={inputHandler}
-              type="password"
-              id="userPassword"
-              name="password"
-            />
-            <SubmitButton text={'Sign up'}></SubmitButton>
-          </Wrapper>
-        </Form>
-      </GridContainer>
-    </Grid>
+          <Label htmlFor="userPassword"></Label>
+          <TextField
+            sx={{ mb: 2 }}
+            variant="outlined"
+            label="Password"
+            onChange={inputHandler}
+            type="password"
+            id="userPassword"
+            name="password"
+          />
+          <SubmitButton text={'Sign up'}></SubmitButton>
+        </Wrapper>
+      </Form>
+    </FormWrapper>
   );
 };
 

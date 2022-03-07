@@ -4,7 +4,7 @@ import { nanoid } from 'nanoid';
 import { toast } from 'react-toastify';
 import TextField from '@mui/material/TextField';
 import SubmitButton from 'components/SubmitButton';
-import { Form, Label, Input, Button, Wrapper } from './ContactForm.styled';
+import { Form, Wrapper } from './ContactForm.styled';
 import 'react-toastify/dist/ReactToastify.css';
 import CircularProgress from '@mui/material/CircularProgress';
 

@@ -3,9 +3,9 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { setUser } from 'redux/authSlice';
 import { useSignInUserMutation } from 'redux/userApi';
-import { Grid, GridContainer } from '../Contacts/Contacts.styled';
 import TextField from '@mui/material/TextField';
 import SubmitButton from 'components/SubmitButton';
+import FormWrapper from 'components/FormWrapper';
 import {
   Form,
   Label,
@@ -47,34 +47,33 @@ const Login = () => {
   };
 
   return (
-    <Grid>
-      <GridContainer>
-        <Form onSubmit={submitHandler}>
-          <Wrapper>
-            <Label htmlFor="userEmail"></Label>
-            <TextField
-              sx={{ mt: 2, mb: 2 }}
-              type="email"
-              variant="outlined"
-              id="userEmail"
-              label="Email"
-              name="email"
-              onChange={inputHandler}
-            />
+    <FormWrapper>
+      <Form onSubmit={submitHandler}>
+        <Wrapper>
+          <h2>Log in form</h2>
+          <Label htmlFor="userEmail"></Label>
+          <TextField
+            sx={{ mt: 2, mb: 2 }}
+            type="email"
+            variant="outlined"
+            id="userEmail"
+            label="Email"
+            name="email"
+            onChange={inputHandler}
+          />
 
-            <Label htmlFor="userPassword"></Label>
-            <TextField
-              type="password"
-              id="userPassword"
-              name="password"
-              label="Password"
-              onChange={inputHandler}
-            />
-            <SubmitButton text={'Sign in'} />
-          </Wrapper>
-        </Form>
-      </GridContainer>
-    </Grid>
+          <Label htmlFor="userPassword"></Label>
+          <TextField
+            type="password"
+            id="userPassword"
+            name="password"
+            label="Password"
+            onChange={inputHandler}
+          />
+          <SubmitButton text={'Sign in'} />
+        </Wrapper>
+      </Form>
+    </FormWrapper>
   );
 };
 
