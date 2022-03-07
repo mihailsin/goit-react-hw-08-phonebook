@@ -1,7 +1,7 @@
 import { nanoid } from 'nanoid';
 import { setString } from 'redux/filter-slice';
 import { useSelector, useDispatch } from 'react-redux';
-import { Label, Input, Wrapper } from '../ContactForm/ContactForm.styled';
+import { Wrapper } from '../ContactForm/ContactForm.styled';
 import TextField from '@mui/material/TextField';
 
 const Filter = () => {
