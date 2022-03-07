@@ -40,18 +40,9 @@ const EditContactForm = ({ extractedName, extractedNumber, extractedId }) => {
     setContactId('');
   };
 
-  const contactsNamesMatched = array => {
-    const normalizedNames = array.map(item => item.name.toLowerCase());
-    if (normalizedNames.includes(name.toLowerCase())) {
-      toast.error(`${name} already in the phonebook!`);
-      return true;
-    }
-  };
-
   const submitHandler = e => {
     e.preventDefault();
     resetFormFields();
-    console.log(contactId, name, number);
 
     editContact({ id: extractedId, name, number })
       .unwrap()
