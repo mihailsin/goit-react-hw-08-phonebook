@@ -15,16 +15,38 @@ const App = () => {
     const isLoggedIn = useSelector(getIsLoggedIn);
     return isLoggedIn ? children : <Navigate to="/login" />;
   };
-  // const PublicRoute = ({children}) => {
-
-  // }
+  const PublicRoute = ({ children }) => {
+    const isLoggedIn = useSelector(getIsLoggedIn);
+    return isLoggedIn ? <Navigate to="/contacts" /> : children;
+  };
   return (
     <>
       <Navigation />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="register" element={<Register />} />
-        <Route path="login" element={<Login />} />
+        <Route
+          path="/"
+          element={
+            <PublicRoute>
+              <Home />
+            </PublicRoute>
+          }
+        />
+        <Route
+          path="register"
+          element={
+            <PublicRoute>
+              <Register />
+            </PublicRoute>
+          }
+        />
+        <Route
+          path="login"
+          element={
+            <PublicRoute>
+              <Login />
+            </PublicRoute>
+          }
+        />
         <Route
           path="contacts"
           element={

@@ -36,6 +36,12 @@ const Navigation = () => {
   const [logOutUser] = useLogOutUserMutation();
   const isLoggedIn = useSelector(getIsLoggedIn);
   const userName = useSelector(getUserName);
+
+  const logOut = () => {
+    logOutUser()
+      .then(dispatch(unsetUser()))
+      .catch(error => console.log(error));
+  };
   console.log(userName, isLoggedIn);
   return (
     <ThemeProvider theme={darkTheme}>
@@ -86,11 +92,7 @@ const Navigation = () => {
                     size="small"
                     color="secondary"
                     type="button"
-                    onClick={() =>
-                      logOutUser()
-                        .then(dispatch(unsetUser()))
-                        .catch(error => console.log(error))
-                    }
+                    onClick={() => logOut()}
                   >
                     Log out
                   </Button>
