@@ -33,10 +33,6 @@ const Login = () => {
 
   const submitHandler = e => {
     e.preventDefault();
-    console.log({
-      userEmail,
-      userPassword,
-    });
 
     signInUser({ email: userEmail, password: userPassword })
       .then(({ data }) => {

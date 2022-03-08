@@ -6,30 +6,31 @@ import ContactList from '../../components/ContactList';
 import Filter from '../../components/Filter';
 import EditContactForm from '../../components/EditContactForm';
 import { Grid, GridContainer } from './Contacts.styled';
+import EditContactModal from 'views/EditContactModal';
 
 const Contacts = () => {
-  const [contactToEdit, setContactToEdit] = useState(null);
-  const extractContact = (name, number, id) => {
-    setContactToEdit({
-      extractedName: name,
-      extractedNumber: number,
-      extractedId: id,
-    });
-  };
-  console.log(contactToEdit);
+  // const [contactToEdit, setContactToEdit] = useState(null);
+  // const extractContact = (name, number, id) => {
+  //   setContactToEdit({
+  //     extractedName: name,
+  //     extractedNumber: number,
+  //     extractedId: id,
+  //   });
+  // };
+  // console.log(contactToEdit);
   return (
     <Grid>
       <GridContainer>
         <h2>Add Contact</h2>
         <ContactForm />
-        <h2>Edit Contact</h2>
-        <EditContactForm {...contactToEdit} />
+        {/* <h2>Edit Contact</h2>
+        <EditContactForm {...contactToEdit} /> */}
       </GridContainer>
 
       <GridContainer>
         <h2>Contacts</h2>
         <Filter />
-        <ContactList getContactToEdit={extractContact} />
+        <ContactList />
       </GridContainer>
       <ToastContainer
         position="top-right"

@@ -42,7 +42,6 @@ const Navigation = () => {
       .then(dispatch(unsetUser()))
       .catch(error => console.log(error));
   };
-  console.log(userName, isLoggedIn);
   return (
     <ThemeProvider theme={darkTheme}>
       <AppBar position="static">

@@ -17,4 +17,8 @@ const Button = styled.button`
     cursor: pointer;
   }
 `;
-export { Item, Button };
+const Div = styled.div`
+  display: flex;
+  justify-content: flex-end;
+`;
+export { Item, Button, Div };

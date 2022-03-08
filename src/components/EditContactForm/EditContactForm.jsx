@@ -3,12 +3,17 @@ import { useEditContactMutation } from 'redux/userApi';
 import { nanoid } from 'nanoid';
 import { toast } from 'react-toastify';
 import SubmitButton from 'components/SubmitButton';
-import { Form, Wrapper } from '../ContactForm/ContactForm.styled';
+import { Form, Wrapper, Button } from './EditContactForm.styled';
 import 'react-toastify/dist/ReactToastify.css';
 import CircularProgress from '@mui/material/CircularProgress';
 import { TextField } from '@mui/material';
 
-const EditContactForm = ({ extractedName, extractedNumber, extractedId }) => {
+const EditContactForm = ({
+  extractedName,
+  extractedNumber,
+  extractedId,
+  handleClose,
+}) => {
   const [editContact, { isLoading }] = useEditContactMutation();
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
@@ -41,6 +46,7 @@ const EditContactForm = ({ extractedName, extractedNumber, extractedId }) => {
 
     editContact({ id: extractedId, name, number })
       .unwrap()
+      .then(handleClose())
       .then(() => toast.success(`${name} added to your phonebook!`))
       .catch(error =>
         toast.error(
@@ -50,6 +56,9 @@ const EditContactForm = ({ extractedName, extractedNumber, extractedId }) => {
   };
   return (
     <Form onSubmit={submitHandler}>
+      <Button type="button" onClick={() => handleClose()}>
+        X
+      </Button>
       <Wrapper>
         <h3>Contact to edit</h3>
         <TextField
@@ -57,7 +66,11 @@ const EditContactForm = ({ extractedName, extractedNumber, extractedId }) => {
           sx={{ mt: 2, mb: 2 }}
           id={idInputId}
           label="id"
-          value={extractedId ? extractedId : ''}
+          value={
+            extractedId
+              ? extractedId
+              : 'Please, select contact to edit from the list'
+          }
           type="text"
           name="id"
           pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -68,7 +81,11 @@ const EditContactForm = ({ extractedName, extractedNumber, extractedId }) => {
           sx={{ mb: 2 }}
           id={nameInputId}
           label="Name"
-          value={extractedName ? extractedName : ''}
+          value={
+            extractedName
+              ? extractedName
+              : 'Please, select contact to edit from the list'
+          }
           type="text"
           name="oldContactName"
           pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -78,7 +95,11 @@ const EditContactForm = ({ extractedName, extractedNumber, extractedId }) => {
           disabled
           id={numberInputid}
           label="Number"
-          value={extractedNumber ? extractedNumber : ''}
+          value={
+            extractedNumber
+              ? extractedNumber
+              : 'Please, select contact to edit from the list'
+          }
           type="tel"
           name="oldContactNumber"
           pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
