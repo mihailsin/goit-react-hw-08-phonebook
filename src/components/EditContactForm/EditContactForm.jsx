@@ -2,17 +2,16 @@ import { useState } from 'react';
 import { useEditContactMutation } from 'redux/userApi';
 import { nanoid } from 'nanoid';
 import { toast } from 'react-toastify';
-import TextField from '@mui/material/TextField';
 import SubmitButton from 'components/SubmitButton';
 import { Form, Wrapper } from '../ContactForm/ContactForm.styled';
 import 'react-toastify/dist/ReactToastify.css';
 import CircularProgress from '@mui/material/CircularProgress';
+import { TextField } from '@mui/material';
 
 const EditContactForm = ({ extractedName, extractedNumber, extractedId }) => {
   const [editContact, { isLoading }] = useEditContactMutation();
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
-  const [contactId, setContactId] = useState('');
 
   const nameInputId = nanoid(7);
   const numberInputid = nanoid(7);
@@ -22,9 +21,6 @@ const EditContactForm = ({ extractedName, extractedNumber, extractedId }) => {
     switch (e.target.name) {
       case 'name':
         setName(e.target.value);
-        break;
-      case 'id':
-        setContactId(e.target.value);
         break;
       case 'number':
         setNumber(e.target.value);
@@ -37,7 +33,6 @@ const EditContactForm = ({ extractedName, extractedNumber, extractedId }) => {
   const resetFormFields = () => {
     setName('');
     setNumber('');
-    setContactId('');
   };
 
   const submitHandler = e => {
@@ -56,23 +51,44 @@ const EditContactForm = ({ extractedName, extractedNumber, extractedId }) => {
   return (
     <Form onSubmit={submitHandler}>
       <Wrapper>
+        <h3>Contact to edit</h3>
         <TextField
-          sx={{ mt: 2, mb: 2 }}
-          variant="outlined"
           disabled
+          sx={{ mt: 2, mb: 2 }}
           id={idInputId}
           label="id"
-          value={extractedId ? extractedId : contactId}
-          onChange={inputHandler}
+          value={extractedId ? extractedId : ''}
           type="text"
           name="id"
           pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
         />
+
         <TextField
+          disabled
           sx={{ mb: 2 }}
-          variant="outlined"
           id={nameInputId}
           label="Name"
+          value={extractedName ? extractedName : ''}
+          type="text"
+          name="oldContactName"
+          pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+          title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+        />
+        <TextField
+          disabled
+          id={numberInputid}
+          label="Number"
+          value={extractedNumber ? extractedNumber : ''}
+          type="tel"
+          name="oldContactNumber"
+          pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+          title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+        />
+        <h3>Edited Contact</h3>
+        <TextField
+          sx={{ mb: 2 }}
+          id={nameInputId}
+          label="New Name"
           value={name}
           onChange={inputHandler}
           type="text"
@@ -81,9 +97,8 @@ const EditContactForm = ({ extractedName, extractedNumber, extractedId }) => {
           title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
         />
         <TextField
-          variant="outlined"
           id={numberInputid}
-          label="Number"
+          label="New Number"
           value={number}
           onChange={inputHandler}
           type="tel"

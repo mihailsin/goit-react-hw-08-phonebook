@@ -12,7 +12,7 @@ setupListeners(store.dispatch);
 
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename="/goit-react-hw-08-phonebook/">
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
           <App />
