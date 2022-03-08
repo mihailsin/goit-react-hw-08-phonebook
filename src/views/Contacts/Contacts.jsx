@@ -1,30 +1,16 @@
 import { React } from 'react';
-import { useState } from 'react';
 import { ToastContainer } from 'react-toastify';
 import ContactForm from '../../components/ContactForm';
 import ContactList from '../../components/ContactList';
 import Filter from '../../components/Filter';
-import EditContactForm from '../../components/EditContactForm';
 import { Grid, GridContainer } from './Contacts.styled';
-import EditContactModal from 'views/EditContactModal';
 
 const Contacts = () => {
-  // const [contactToEdit, setContactToEdit] = useState(null);
-  // const extractContact = (name, number, id) => {
-  //   setContactToEdit({
-  //     extractedName: name,
-  //     extractedNumber: number,
-  //     extractedId: id,
-  //   });
-  // };
-  // console.log(contactToEdit);
   return (
     <Grid>
       <GridContainer>
         <h2>Add Contact</h2>
         <ContactForm />
-        {/* <h2>Edit Contact</h2>
-        <EditContactForm {...contactToEdit} /> */}
       </GridContainer>
 
       <GridContainer>
