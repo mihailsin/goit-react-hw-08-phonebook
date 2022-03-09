@@ -45,7 +45,6 @@ const Register = () => {
     });
     registerUser({ name: userName, email: userEmail, password: userPassword })
       .then(({ data }) => {
-        console.log('signed in user:', data.user, 'token:', data.token);
         dispatch(setUser(data));
       })
       .catch(error => console.log(error.message));

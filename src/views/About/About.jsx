@@ -1,5 +1,5 @@
 import React from 'react';
-import { GridContainer, GridItem, Wrapper, Header } from './Home.styled';
+import { GridContainer, GridItem, Wrapper, Header } from './About.styled';
 import { ImHtmlFive } from 'react-icons/im';
 import { FaJsSquare, FaReact, FaCss3Alt } from 'react-icons/fa';
 import {
@@ -11,7 +11,7 @@ import {
 } from 'react-icons/si';
 import BottomNav from 'components/BottomNav';
 
-const Home = () => {
+const About = () => {
   return (
     <>
       <Wrapper>
@@ -51,4 +51,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default About;

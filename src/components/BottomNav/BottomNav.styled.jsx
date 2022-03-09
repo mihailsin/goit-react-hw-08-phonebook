@@ -5,6 +5,7 @@ const Wrapper = styled.div`
 `;
 
 const List = styled.ul`
+  color: #ffffff;
   list-style: none;
   display: flex;
   flex-flow: row nowrap;
@@ -26,4 +27,10 @@ const Link = styled.a`
   justify-content: center;
   align-items: center;
 `;
-export { List, Item, Link, Wrapper };
+const Footer = styled.footer`
+  position: sticky;
+  bottom: 0;
+  background-color: #252323;
+  padding: 5px;
+`;
+export { List, Item, Link, Wrapper, Footer };

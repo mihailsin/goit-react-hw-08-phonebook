@@ -111,6 +111,14 @@ const Navigation = () => {
                     Login
                   </NavLink>
                 </li>
+                <li>
+                  <NavLink
+                    style={({ isActive }) => (isActive ? activeLink : navLink)}
+                    to="about"
+                  >
+                    About
+                  </NavLink>
+                </li>
               </List>
             </nav>
           </Container>
