@@ -44,7 +44,7 @@ const Navigation = () => {
   };
   return (
     <ThemeProvider theme={darkTheme}>
-      <AppBar position="static">
+      <AppBar position="sticky">
         {isLoggedIn ? (
           <Wrapper>
             <Container>

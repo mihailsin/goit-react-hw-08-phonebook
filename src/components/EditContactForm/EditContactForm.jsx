@@ -2,8 +2,9 @@ import { useState } from 'react';
 import { useEditContactMutation } from 'redux/userApi';
 import { nanoid } from 'nanoid';
 import { toast } from 'react-toastify';
+import { ImCross } from 'react-icons/im';
 import SubmitButton from 'components/SubmitButton';
-import { Form, Wrapper, Button } from './EditContactForm.styled';
+import { Form, Wrapper, Div } from './EditContactForm.styled';
 import 'react-toastify/dist/ReactToastify.css';
 import CircularProgress from '@mui/material/CircularProgress';
 import { TextField } from '@mui/material';
@@ -56,9 +57,9 @@ const EditContactForm = ({
   };
   return (
     <Form onSubmit={submitHandler}>
-      <Button type="button" onClick={() => handleClose()}>
-        X
-      </Button>
+      <Div>
+        <ImCross size={14} onClick={() => handleClose()} />
+      </Div>
       <Wrapper>
         <h3>Contact to edit</h3>
         <TextField

@@ -10,12 +10,11 @@ const Label = styled.label``;
 const Input = styled.input`
   margin-bottom: 10px;
 `;
-const Button = styled.button`
-  display: block;
+const Div = styled.div`
   margin-left: auto;
-  width: 40px;
+  width: 20px;
   &:hover {
     cursor: pointer;
   }
 `;
-export { Form, Label, Input, Button, Wrapper };
+export { Form, Label, Input, Div, Wrapper };
