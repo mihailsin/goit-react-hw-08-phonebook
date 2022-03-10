@@ -3,6 +3,7 @@ import { useGetContactsQuery } from 'redux/userApi';
 import { List } from './ContactList.styled';
 import CircularProgress from '@mui/material/CircularProgress';
 import ContactItem from 'components/ContactItem';
+import PropTypes from 'prop-types';
 
 const ContactList = ({ getContactToEdit }) => {
   const { data, isLoading } = useGetContactsQuery();
@@ -41,6 +42,10 @@ const ContactList = ({ getContactToEdit }) => {
       )}
     </>
   );
+};
+
+ContactList.propTypes = {
+  getContactToEdit: PropTypes.object,
 };
 
 export default ContactList;

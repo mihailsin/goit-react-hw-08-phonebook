@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRegisterUserMutation } from 'redux/userApi';
 import { setUser } from 'redux/authSlice';
 import { useDispatch } from 'react-redux';
@@ -15,10 +15,17 @@ import {
 const Register = () => {
   const dispatch = useDispatch();
 
-  const [registerUser] = useRegisterUserMutation();
+  const [registerUser, { error }] = useRegisterUserMutation();
   const [userName, setUserName] = useState('');
   const [userEmail, setUserEmail] = useState('');
   const [userPassword, setUserPassword] = useState('');
+
+  useEffect(() => {
+    if (error)
+      alert(
+        'User with credentials you have entered is already exists, try another Name/Email'
+      );
+  }, [error]);
 
   const inputHandler = e => {
     switch (e.target.name) {
@@ -38,11 +45,6 @@ const Register = () => {
 
   const submitHandler = e => {
     e.preventDefault();
-    console.log({
-      userName,
-      userEmail,
-      userPassword,
-    });
     registerUser({ name: userName, email: userEmail, password: userPassword })
       .then(({ data }) => {
         dispatch(setUser(data));

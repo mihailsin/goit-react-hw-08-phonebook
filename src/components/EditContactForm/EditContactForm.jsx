@@ -8,6 +8,7 @@ import { Form, Wrapper, Div } from './EditContactForm.styled';
 import 'react-toastify/dist/ReactToastify.css';
 import CircularProgress from '@mui/material/CircularProgress';
 import { TextField } from '@mui/material';
+import PropTypes from 'prop-types';
 
 const EditContactForm = ({
   extractedName,
@@ -47,8 +48,8 @@ const EditContactForm = ({
 
     editContact({ id: extractedId, name, number })
       .unwrap()
-      .then(handleClose())
       .then(() => toast.success(`${name} added to your phonebook!`))
+      .then(handleClose())
       .catch(error =>
         toast.error(
           `PATCH request threw an error! ${error.status}: ${error.data}`
@@ -140,6 +141,13 @@ const EditContactForm = ({
       </Wrapper>
     </Form>
   );
+};
+
+EditContactForm.propTypes = {
+  extractedName: PropTypes.string,
+  extractedNumber: PropTypes.string,
+  extractedId: PropTypes.string,
+  handleClose: PropTypes.func,
 };
 
 export default EditContactForm;

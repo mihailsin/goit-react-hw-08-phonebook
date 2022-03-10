@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useGetContactsQuery, useAddContactMutation } from 'redux/userApi';
 import { nanoid } from 'nanoid';
 import { toast } from 'react-toastify';
@@ -10,12 +10,19 @@ import CircularProgress from '@mui/material/CircularProgress';
 
 const ContactForm = () => {
   const [addContact, { isLoading }] = useAddContactMutation();
-  const { data } = useGetContactsQuery();
+  const { data, isError, error } = useGetContactsQuery();
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
   const nameInputId = nanoid(7);
   const numberInputid = nanoid(7);
+
+  useEffect(() => {
+    if (isError && error.status === 401)
+      alert(
+        'Authorization error occured. It seems that your token is out of date. Please log out and then log in again'
+      );
+  }, [error, isError]);
 
   const inputHandler = e => {
     if (e.target.name === 'name') {

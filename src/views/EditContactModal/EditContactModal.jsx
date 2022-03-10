@@ -5,6 +5,7 @@ import { Button } from 'components/ContactItem/ContactItem.styled';
 import Modal from '@mui/material/Modal';
 import { useState } from 'react';
 import EditContactForm from 'components/EditContactForm';
+import PropTypes from 'prop-types';
 
 const style = {
   position: 'absolute',
@@ -28,6 +29,7 @@ const EditContactModal = ({ extractedName, extractedNumber, extractedId }) => {
       <Button onClick={handleOpen}>
         <ImPencil2 size={18} />
       </Button>
+
       <Modal
         open={open}
         onClose={handleClose}
@@ -45,5 +47,11 @@ const EditContactModal = ({ extractedName, extractedNumber, extractedId }) => {
       </Modal>
     </div>
   );
+};
+
+EditContactModal.propTypes = {
+  extractedName: PropTypes.string,
+  extractedNumber: PropTypes.string,
+  extractedId: PropTypes.string,
 };
 export default EditContactModal;

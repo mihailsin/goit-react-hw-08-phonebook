@@ -5,9 +5,10 @@ import CircularProgress from '@mui/material/CircularProgress';
 import { toast } from 'react-toastify';
 import { Item, Button, Div } from './ContactItem.styled';
 import EditContactModal from 'views/EditContactModal';
-const ContactItem = ({ getContactToEdit, name, number, id }) => {
-  const [deleteContact, { isLoading: isDeleting }] = useDeleteContactMutation();
+import PropTypes from 'prop-types';
 
+const ContactItem = ({ name, number, id }) => {
+  const [deleteContact, { isLoading: isDeleting }] = useDeleteContactMutation();
   const [contactToEdit, setContactToEdit] = useState(null);
   const extractContact = (name, number, id) => {
     setContactToEdit({
@@ -46,6 +47,12 @@ const ContactItem = ({ getContactToEdit, name, number, id }) => {
       </Div>
     </Item>
   );
+};
+
+ContactItem.propTypes = {
+  name: PropTypes.string,
+  number: PropTypes.string,
+  id: PropTypes.string,
 };
 
 export default ContactItem;
