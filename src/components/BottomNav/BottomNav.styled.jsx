@@ -27,10 +27,14 @@ const Link = styled.a`
   justify-content: center;
   align-items: center;
 `;
+const InlineLink = styled.a`
+  color: #ffff00;
+  text-decoration: none;
+`;
 const Footer = styled.footer`
   position: sticky;
   bottom: 0;
   background-color: #252323;
   padding: 5px;
 `;
-export { List, Item, Link, Wrapper, Footer };
+export { List, Item, Link, Wrapper, Footer, InlineLink };
