@@ -55,6 +55,7 @@ const Login = () => {
             label="Email"
             name="email"
             onChange={inputHandler}
+            required
           />
 
           <Label htmlFor="userPassword"></Label>
@@ -64,6 +65,7 @@ const Login = () => {
             name="password"
             label="Password"
             onChange={inputHandler}
+            required
           />
           <SubmitButton text={'Sign in'} />
         </Wrapper>

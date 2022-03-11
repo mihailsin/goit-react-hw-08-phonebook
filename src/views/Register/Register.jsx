@@ -66,6 +66,7 @@ const Register = () => {
             type="text"
             id="userName"
             name="name"
+            required
           />
 
           <Label htmlFor="userEmail"></Label>
@@ -77,6 +78,7 @@ const Register = () => {
             label="Email"
             onChange={inputHandler}
             name="email"
+            required
           />
 
           <Label htmlFor="userPassword"></Label>
@@ -88,6 +90,7 @@ const Register = () => {
             type="password"
             id="userPassword"
             name="password"
+            required
           />
           <SubmitButton text={'Sign up'}></SubmitButton>
         </Wrapper>
